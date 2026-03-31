@@ -69,8 +69,8 @@ projet-morpion/
 | Decision Tree | 0.7918 | 0.7972 | 0.8330 | 0.8356 |
 | Random Forest | 0.8784 | 0.8692 | 0.9052 | 0.8908 |
 | XGBoost | 0.9381 | 0.9371 | 0.9196 | 0.9164 |
-| MLP | à compléter | à compléter | à compléter | à compléter |
-| Gradient Boosting | à compléter | à compléter | à compléter | à compléter |
+| MLP | 0.9155 | 0.9161 | 0.9485 | 0.9478 |
+| Gradient Boosting | 0.8392 | 0.8275 | 0.8763 | 0.8587 |
 
 **Meilleur modèle : XGBoost** sur les deux cibles.
 
