@@ -37,18 +37,23 @@ jeu de Morpion (Tic-Tac-Toe). Il comprend :
 ## Structure du repository
 
 ```md
-projet-morpion/
-├── generator.py          # Générateur Minimax + export CSV
-├── minimax.py            # Algorithme Minimax + Alpha-Bêta
-├── utils.py              # Fonctions utilitaires du plateau
-├── notebook.ipynb        # EDA + Baseline + Modèles avancés
+.
+├── api/
+│   └── main.py              # API FastAPI — expose /predict aux modèles ML
+├── frontend/                # Interface React + TypeScript (Vite)
+│   └── src/
+│       ├── game/            # Logique de jeu, IA ML, Minimax hybride
+│       └── components/      # Board, Cell, GameStatus, ModeSelector
+├── generators/
+│   ├── generator_dataset.py # Génère ressources/dataset.csv via Minimax
+│   ├── minimax.py           # Algorithme Minimax Alpha-Bêta
+│   └── utils.py
 ├── ressources/
-│   ├── dataset.csv       # Dataset généré (2423 lignes, 20 colonnes)
-│   ├── model_xwins.pkl   # Meilleur modèle — cible x_wins
-│   └── model_draw.pkl    # Meilleur modèle — cible is_draw
-├── interface/            # Interface jouable (3 modes)
-│   └── README-jeu.md     # Instructions pour lancer le jeu
-└── README.md             # Ce fichier
+│   ├── dataset.csv          # 2423 états labellisés (18 features + 2 cibles)
+│   ├── model_xwins.pkl      # Modèle XGBoost — prédit x_wins
+│   └── model_draw.pkl       # Modèle XGBoost — prédit is_draw
+├── notebook.ipynb           # EDA + Baseline + Modèles avancés
+└── README.md
 ```
 
 ## Installation et lancement
