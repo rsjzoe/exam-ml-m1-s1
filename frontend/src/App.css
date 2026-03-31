@@ -1,0 +1,164 @@
+/* ── Page wrapper ── */
+.app-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  margin-top: 35px !important;
+  max-width: 860px;
+}
+
+/* ── Game card ── */
+.game-card {
+  background: var(--card-bg);
+  border-radius: 28px;
+  padding: 28px 32px 32px;
+  width: 100%;
+  /* box-shadow: var(--shadow-card); */
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ── Card header ── */
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.game-title {
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: var(--text-dark);
+  line-height: 1;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.game-title .tac {
+  color: var(--red);
+}
+
+/* Round badge */
+.round-badge {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--yellow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(245, 196, 49, 0.45);
+  line-height: 1;
+}
+
+.round-number {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--text-dark);
+  line-height: 1;
+}
+.round-number-flex {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.round-ordinal {
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.round-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  opacity: 0.7;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Card body: players + board ── */
+.card-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding-top: 16px; /* room for avatar pop */
+}
+
+.board-area {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* ── Card footer ── */
+.card-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.restart-btn {
+  background: transparent;
+  border: 2px solid #e8c4ca;
+  border-radius: 20px;
+  padding: 8px 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-medium);
+  transition:
+    border-color 0.15s,
+    color 0.15s,
+    background 0.15s;
+}
+
+.restart-btn:hover {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.restart-btn--next {
+  background: var(--yellow);
+  border-color: var(--yellow);
+  color: var(--red);
+  font-weight: 800;
+}
+
+.restart-btn--next:hover {
+  background: #f0bb20;
+  border-color: #f0bb20;
+  color: var(--red);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .game-card {
+    padding: 20px 16px 24px;
+    gap: 20px;
+  }
+  .card-body {
+    flex-direction: column;
+  }
+  .round-badge {
+    position: static;
+    transform: none;
+  }
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}

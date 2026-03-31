@@ -1,0 +1,75 @@
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--yellow);
+  color: var(--red);
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 12px 36px;
+  border-radius: 40px;
+  min-width: 180px;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(245, 196, 49, 0.4);
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+.status-pill--result {
+  background: var(--red);
+  color: var(--white);
+  box-shadow: 0 4px 16px rgba(232, 55, 74, 0.4);
+  animation: result-pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.status-label {
+  color: var(--white);
+}
+
+.status-pill--thinking {
+  opacity: 0.85;
+}
+
+/* Thinking dots */
+.thinking-dots {
+  display: flex;
+  gap: 4px;
+}
+.thinking-dots span {
+  width: 6px;
+  height: 6px;
+  background: var(--red);
+  border-radius: 50%;
+  animation: bounce 0.7s ease-in-out infinite;
+}
+.thinking-dots span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.thinking-dots span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-5px);
+    opacity: 1;
+  }
+}
+
+@keyframes result-pop {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
