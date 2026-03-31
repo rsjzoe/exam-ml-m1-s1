@@ -1,0 +1,21 @@
+.board-wrapper {
+  border-radius: 18px;
+  padding: 8px;
+  background: transparent;
+  background-image:
+    repeating-linear-gradient(to right, var(--red) 0, var(--red) 8px, transparent 8px, transparent 16px),
+    repeating-linear-gradient(to bottom, var(--red) 0, var(--red) 8px, transparent 8px, transparent 16px),
+    repeating-linear-gradient(to right, var(--red) 0, var(--red) 8px, transparent 8px, transparent 16px),
+    repeating-linear-gradient(to bottom, var(--red) 0, var(--red) 8px, transparent 8px, transparent 16px);
+  background-size: 100% 2px, 2px 100%, 100% 2px, 2px 100%;
+  background-position: 0 0, 0 0, 0 100%, 100% 0;
+  background-repeat: repeat-x, repeat-y, repeat-x, repeat-y;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: min(300px, 56vw);
+  border-radius: 14px;
+  overflow: hidden;
+}
