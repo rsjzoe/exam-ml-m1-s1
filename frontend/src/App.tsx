@@ -136,7 +136,7 @@ export default function App() {
   const playerMeta: Record<Player, { name: string; avatar: string }> = {
     X: { name: "Joueur 1", avatar: "/fox.png" },
     O: isAIMode
-      ? { name: "IA", avatar: "path/to/ai-avatar.png" }
+      ? { name: "IA", avatar: "/ia.jpeg" }
       : { name: "Joueur 2", avatar: "/mechantpurple.png" },
   };
 
