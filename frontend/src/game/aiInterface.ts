@@ -43,10 +43,7 @@ export interface MLPrediction {
 
 // ─── Config ───────────────────────────────────────────────────────────────────
 
-const API_URL = 'http://localhost:8000/predict'
-
-// Passer à false quand l'API de ta collègue est prête
-const USE_STUB = true
+const API_URL = 'http://localhost:8123/predict'
 
 // ─── Prediction ───────────────────────────────────────────────────────────────
 
@@ -55,15 +52,6 @@ const USE_STUB = true
  * En mode stub : retourne des valeurs aléatoires (permet de tester l'UI).
  */
 export async function getMLPrediction(board: Board): Promise<MLPrediction> {
-  if (USE_STUB) {
-    // Stub : simule une réponse ML aléatoire
-    await new Promise((r) => setTimeout(r, 120)) // délai simulé
-    return {
-      x_wins: Math.random(),
-      is_draw: Math.random(),
-    }
-  }
-
   const features = encodeBoard(board)
   const response = await fetch(API_URL, {
     method: 'POST',
