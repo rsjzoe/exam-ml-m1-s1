@@ -10,13 +10,17 @@ Examen Final — Semestre 1 — Machine Learning
 |                   |                                                |
 | ----------------- | ---------------------------------------------- |
 | **Établissement** | Institut Supérieur Polytechnique de Madagascar |
-| **Filière**       | IGGLIA4                                        |
+| **Filière**       | _IGGLIA4_                                      |
 | **Groupe**        | Dev Team                                       |
 
-## Membres du groupe
+## Membres du groupe (_IGGLIA4_ )
 
-- Iza aho ?
-- Iza aho ?
+- RAVALISON fanevampifaliana Josia,Numéro :56
+- RABEARISOA Heriniaina Liantsoa, Numéro: 44
+- RAMANANTENASOA Elissaha, Numéro: 42
+- RANARISON Haingoniaiko Lucka, Numéro: 60
+- RAZAFIMAHONONA Volasoa , Numéro : 50
+- RASOARIJAONA Volatiana Zoé, Numéro : 43
 
 ---
 
@@ -39,20 +43,20 @@ jeu de Morpion (Tic-Tac-Toe). Il comprend :
 ```md
 .
 ├── api/
-│   └── main.py              # API FastAPI — expose /predict aux modèles ML
-├── frontend/                # Interface React + TypeScript (Vite)
-│   └── src/
-│       ├── game/            # Logique de jeu, IA ML, Minimax hybride
-│       └── components/      # Board, Cell, GameStatus, ModeSelector
+│ └── main.py # API FastAPI — expose /predict aux modèles ML
+├── frontend/ # Interface React + TypeScript (Vite)
+│ └── src/
+│ ├── game/ # Logique de jeu, IA ML, Minimax hybride
+│ └── components/ # Board, Cell, GameStatus, ModeSelector
 ├── generators/
-│   ├── generator_dataset.py # Génère ressources/dataset.csv via Minimax
-│   ├── minimax.py           # Algorithme Minimax Alpha-Bêta
-│   └── utils.py
+│ ├── generator_dataset.py # Génère ressources/dataset.csv via Minimax
+│ ├── minimax.py # Algorithme Minimax Alpha-Bêta
+│ └── utils.py
 ├── ressources/
-│   ├── dataset.csv          # 2423 états labellisés (18 features + 2 cibles)
-│   ├── model_xwins.pkl      # Modèle XGBoost — prédit x_wins
-│   └── model_draw.pkl       # Modèle XGBoost — prédit is_draw
-├── notebook.ipynb           # EDA + Baseline + Modèles avancés
+│ ├── dataset.csv # 2423 états labellisés (18 features + 2 cibles)
+│ ├── model_xwins.pkl # Modèle XGBoost — prédit x_wins
+│ └── model_draw.pkl # Modèle XGBoost — prédit is_draw
+├── notebook.ipynb # EDA + Baseline + Modèles avancés
 └── README.md
 ```
 
