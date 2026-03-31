@@ -240,7 +240,7 @@ car le ML intervient uniquement aux feuilles de l'arbre de recherche.
 
 ## Vidéo de présentation
 
-[Lien vers la vidéo — à compléter avant 16h30]
+<video src="LES MEMBRE DU GROUPE 2.mp4" controls width="100%"></video>
 
 ---
 
