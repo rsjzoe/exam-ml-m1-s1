@@ -225,7 +225,16 @@ où la frontière de décision est la plus complexe.
 
 ### Q4 — Mode hybride
 
-[Reponse du question 4 a faire]
+Le mode Hybride joue mieux que le mode ML pur grâce à sa profondeur de
+raisonnement : **3 coups à l'avance** (Minimax Alpha-Bêta) contre **1 coup**
+pour le ML pur.
+
+Conséquence directe : le Hybride détecte et évite les **fourchettes** (fork —
+deux menaces simultanées), ce que le ML pur ne peut pas voir. Il construit
+aussi ses propres doubles menaces plus efficacement.
+
+La contrepartie est un temps de réflexion plus long (~27 appels API contre ~7),
+car le ML intervient uniquement aux feuilles de l'arbre de recherche.
 
 ---
 
@@ -235,4 +244,4 @@ où la frontière de décision est la plus complexe.
 
 ---
 
-_ISPM — Examen Final Semestre 1 — Machine Learning — 2024/2025_
+_ISPM — Examen Final Semestre 1 — Machine Learning — 2026_
