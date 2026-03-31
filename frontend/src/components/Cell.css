@@ -41,10 +41,9 @@
 /* X → jaune, O → blanc */
 .cell-symbol--x { color: var(--cell-yellow); }
 .cell-symbol--o {
-  -webkit-text-stroke: 3px var(--white);
-  color: transparent;
+  -webkit-text-stroke: 2px var(--white);
+  color: var(--white);
 }
-
 /* Dans la ligne gagnante → tout blanc */
 .cell-symbol--winning {
   color: var(--white) !important;
