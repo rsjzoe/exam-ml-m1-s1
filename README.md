@@ -1,46 +1,55 @@
-# Morpion IA — Pipeline Machine Learning
+# Projet Machine Learning — Morpion Adaptatif
 
 **[Institut Supérieur Polytechnique de Madagascar](https://www.ispm.mg)**  
-Examen Final — Semestre 1 — Machine Learning  
-ESIIA4 – IGGLIA4 – IMTICIA4 – ISAIA4
+Examen Final — Semestre 1 — Machine Learning
 
 ---
+
+## Informations du groupe
+
+|                   |                                                |
+| ----------------- | ---------------------------------------------- |
+| **Établissement** | Institut Supérieur Polytechnique de Madagascar |
+| **Filière**       | IGGLIA4                                        |
+| **Groupe**        | Dev Team                                       |
 
 ## Membres du groupe
 
-<!-- TODO: ajouter les noms des membres -->
+- Iza aho ?
+- Iza aho ?
 
 ---
 
-## Description
+## Description du projet
 
-Pipeline ML complet autour du jeu de Morpion : génération de dataset par algorithme Minimax Alpha-Bêta, entraînement de modèles de classification (Régression Logistique, Decision Tree, Random Forest, XGBoost), et interface jouable en React avec 3 modes — Humain vs Humain, vs IA (ML), vs IA (Hybride).
+Ce projet implémente un pipeline Machine Learning complet autour du
+jeu de Morpion (Tic-Tac-Toe). Il comprend :
+
+- Un générateur de dataset basé sur l'algorithme Minimax avec
+  élagage Alpha-Bêta
+- Une analyse exploratoire des données (EDA)
+- Des modèles ML entraînés sur deux cibles : `x_wins` et `is_draw`
+- Une interface jouable avec trois modes : vs Human, vs IA (ML),
+  vs IA (Hybride)
 
 ---
 
 ## Structure du repository
 
-```txt
-.
-├── api/
-│   └── main.py              # API FastAPI — expose /predict aux modèles ML
-├── frontend/                # Interface React + TypeScript (Vite)
-│   └── src/
-│       ├── game/            # Logique de jeu, IA ML, Minimax hybride
-│       └── components/      # Board, Cell, GameStatus, ModeSelector
-├── generators/
-│   ├── generator_dataset.py # Génère ressources/dataset.csv via Minimax
-│   ├── minimax.py           # Algorithme Minimax Alpha-Bêta
-│   └── utils.py
+```md
+projet-morpion/
+├── generator.py          # Générateur Minimax + export CSV
+├── minimax.py            # Algorithme Minimax + Alpha-Bêta
+├── utils.py              # Fonctions utilitaires du plateau
+├── notebook.ipynb        # EDA + Baseline + Modèles avancés
 ├── ressources/
-│   ├── dataset.csv          # 2423 états labellisés (18 features + 2 cibles)
-│   ├── model_xwins.pkl      # Modèle XGBoost — prédit x_wins
-│   └── model_draw.pkl       # Modèle XGBoost — prédit is_draw
-├── notebook.ipynb           # EDA + Baseline + Modèles avancés
-└── README.md
+│   ├── dataset.csv       # Dataset généré (2423 lignes, 20 colonnes)
+│   ├── model_xwins.pkl   # Meilleur modèle — cible x_wins
+│   └── model_draw.pkl    # Meilleur modèle — cible is_draw
+├── interface/            # Interface jouable (3 modes)
+│   └── README-jeu.md     # Instructions pour lancer le jeu
+└── README.md             # Ce fichier
 ```
-
----
 
 ## Installation et lancement
 
@@ -97,39 +106,124 @@ Ouvre [http://localhost:5173](http://localhost:5173).
 
 ## Résultats ML
 
-| Modèle                | Cible       | Accuracy   | F1-Score   |
-| --------------------- | ----------- | ---------- | ---------- |
-| Régression Logistique | x_wins      | 0.7876     | 0.7336     |
-| Régression Logistique | is_draw     | 0.8268     | 0.7484     |
-| Decision Tree         | x_wins      | 0.7918     | 0.7972     |
-| Decision Tree         | is_draw     | 0.8330     | 0.8356     |
-| Random Forest         | x_wins      | 0.8784     | 0.8692     |
-| Random Forest         | is_draw     | 0.9052     | 0.8908     |
-| **XGBoost**           | **x_wins**  | **0.9381** | **0.9371** |
-| **XGBoost**           | **is_draw** | **0.9196** | **0.9164** |
+### Dataset
+
+| Propriété          | Valeur     |
+| ------------------ | ---------- |
+| Nombre d'états     | 2423       |
+| Nombre de features | 18         |
+| x_wins = 1         | 1830 (75%) |
+| x_wins = 0         | 593 (25%)  |
+| is_draw = 1        | 441 (18%)  |
+| is_draw = 0        | 1982 (82%) |
+
+### Tableau comparatif des modèles
+
+| Modèle                | x_wins Accuracy | x_wins F1 | is_draw Accuracy | is_draw F1 |
+| --------------------- | --------------- | --------- | ---------------- | ---------- |
+| Régression Logistique | 0.6534          | 0.6520    | 0.7894           | 0.6965     |
+| Decision Tree         | 0.7918          | 0.7972    | 0.8330           | 0.8356     |
+| Random Forest         | 0.8784          | 0.8692    | 0.9052           | 0.8908     |
+| XGBoost               | 0.9381          | 0.9371    | 0.9196           | 0.9164     |
+| MLP                   | 0.9155          | 0.9161    | 0.9485           | 0.9478     |
+| Gradient Boosting     | 0.8392          | 0.8275    | 0.8763           | 0.8587     |
+
+**Meilleur modèle : XGBoost** sur les deux cibles.
 
 ---
 
-## Réponses aux questions (Q1–Q4)
+## Réponses aux questions
 
 ### Q1 — Analyse des coefficients
 
-<!-- TODO -->
+La case centrale (L1,C1 — case 4) est la plus influente dans les
+deux modèles :
+
+- Corrélation `x_wins ← X occupe centre` : **+0.11**
+- Corrélation `x_wins ← O occupe centre` : **-0.22**
+
+La case centrale apparaît occupée par X dans **592 états gagnants
+sur 1830** soit 32% des victoires de X.
+
+La corrélation négative de O au centre (-0.22) est plus forte en
+valeur absolue que la corrélation positive de X au centre (+0.11).
+Cela signifie que laisser O prendre le centre nuit plus à X que
+X prenant le centre ne l'aide.
+
+C'est cohérent avec la stratégie humaine : le centre appartient à
+4 combinaisons gagnantes (2 diagonales + 1 ligne + 1 colonne),
+ce qui en fait la case stratégiquement la plus puissante du plateau.
+
+Pour `is_draw` : les coefficients sont plus uniformément répartis
+sur tout le plateau, car un match nul nécessite un équilibre global
+et non une case clé.
+
+---
 
 ### Q2 — Déséquilibre des classes
 
-<!-- TODO -->
+| Cible   | Classe 0   | Classe 1   | Équilibré ?       |
+| ------- | ---------- | ---------- | ----------------- |
+| x_wins  | 593 (25%)  | 1830 (75%) | Non               |
+| is_draw | 1982 (82%) | 441 (18%)  | Très déséquilibré |
+
+Les deux cibles sont déséquilibrées, surtout `is_draw` (seulement
+18% de 1). Dans ce cas l'Accuracy est trompeuse — un modèle qui
+prédit toujours "pas nul" obtiendrait déjà 82% d'accuracy sans
+rien apprendre réellement.
+
+On privilégie donc le **F1-Score** qui pénalise les erreurs sur la
+classe minoritaire, et l'**AUC-ROC** qui mesure la capacité du
+modèle à distinguer les deux classes indépendamment du seuil de
+décision. Ces métriques donnent une image plus honnête des
+performances réelles du modèle.
+
+---
 
 ### Q3 — Comparaison des deux modèles
 
-<!-- TODO -->
+`x_wins` est plus difficile à apprendre que `is_draw` pour la
+Régression Logistique (0.65 vs 0.79). Trois raisons expliquent
+cette différence :
+
+**Raison 1 — Complexité non-linéaire.** Prédire si X gagne dépend
+de combinaisons précises de cases occupées (ex : X a deux cases
+alignées + la troisième est libre). La Régression Logistique est
+un modèle linéaire qui ne peut tracer qu'une frontière droite entre
+les classes, insuffisante pour capturer ces interactions.
+
+**Raison 2 — Déséquilibre trompeur pour is_draw.** L'accuracy de
+0.79 pour `is_draw` est en partie due au déséquilibre (82% de 0)
+— le modèle prédit souvent "pas nul" et a statistiquement raison.
+Le F1 de 0.69 révèle cette limite.
+
+**Raison 3 — Nature du problème.** Déterminer une victoire
+nécessite de reconnaître des patterns globaux sur le plateau
+(alignements, menaces, contre-menaces) que la régression logistique
+ne modélise pas.
+
+Les modèles avancés corrigent cela progressivement :
+
+- Decision Tree : +13% sur x_wins grâce aux règles de décision
+- Random Forest : +22% grâce à l'ensemble de 100 arbres
+- XGBoost : +28% grâce au boosting itératif
+
+Les erreurs se concentrent sur les états intermédiaires du jeu
+(3-4 pièces posées) où plusieurs issues sont encore possibles et
+où la frontière de décision est la plus complexe.
+
+---
 
 ### Q4 — Mode hybride
 
-<!-- TODO -->
+[Reponse du question 4 a faire]
 
 ---
 
 ## Vidéo de présentation
 
-<!-- TODO: lien vidéo -->
+[Lien vers la vidéo — à compléter avant 16h30]
+
+---
+
+_ISPM — Examen Final Semestre 1 — Machine Learning — 2024/2025_
