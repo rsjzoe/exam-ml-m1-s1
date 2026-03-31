@@ -1,6 +1,6 @@
 # Projet Machine Learning — Morpion Adaptatif
 
-**[Institut Supérieur Polytechnique de Madagascar](https://www.ispm.mg)**  
+**[Institut Supérieur Polytechnique de Madagascar](https://ispm-edu.com/)**  
 Examen Final — Semestre 1 — Machine Learning
 
 ---
